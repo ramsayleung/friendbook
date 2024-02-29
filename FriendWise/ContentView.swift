@@ -13,6 +13,12 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
+            if isLoading {
+                ProgressView() {
+                    Text("Loading...")
+                }
+            }
+            
             List{
                 ForEach(users){ user in
                     NavigationLink{
@@ -31,14 +37,11 @@ struct ContentView: View {
                         }
                     }
                 }
-                if isLoading {
-                    ProgressView(){
-                        Text("Loading...")
-                    }
-                }
+                
             }
             .navigationTitle("FriendBook")
             .navigationBarTitleDisplayMode(.inline)
+            
         }
         .onAppear {
             Task {
