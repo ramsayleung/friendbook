@@ -8,14 +8,62 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var users = [User]()
+    @State private var isLoading = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List{
+                ForEach(users){ user in
+                    NavigationLink{
+                        UserView(user: user)
+                    } label: {
+                        VStack(alignment: .leading){
+                            Text(user.name)
+                                .font(.headline)
+                            
+                            HStack {
+                                Circle()
+                                    .frame(width:10, height: 10)
+                                    .foregroundColor(user.isActive ? .green : .secondary)
+                                Text(String(user.age))
+                            }
+                        }
+                    }
+                }
+                if isLoading {
+                    ProgressView(){
+                        Text("Loading...")
+                    }
+                }
+            }
+            .navigationTitle("FriendBook")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .padding()
+        .onAppear {
+            Task {
+                isLoading = true
+                await fetchUsers()
+                isLoading = false // Update loading state after fetching
+            }
+        }
+    }
+    
+    func fetchUsers() async {
+        guard users.isEmpty else{
+            return
+        }
+        
+        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            users = try decoder.decode([User].self, from: data)
+        }catch {
+            print("Error downloading data:", error.localizedDescription)
+            fatalError("Unable to download data")
+        }
     }
 }
 

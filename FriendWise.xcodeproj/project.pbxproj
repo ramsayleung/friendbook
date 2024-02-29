@@ -14,6 +14,9 @@
 		57234AF82B902DDF000C50A0 /* FriendWiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57234AF72B902DDF000C50A0 /* FriendWiseTests.swift */; };
 		57234B022B902DDF000C50A0 /* FriendWiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57234B012B902DDF000C50A0 /* FriendWiseUITests.swift */; };
 		57234B042B902DDF000C50A0 /* FriendWiseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57234B032B902DDF000C50A0 /* FriendWiseUITestsLaunchTests.swift */; };
+		57234B112B90348C000C50A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57234B102B90348C000C50A0 /* User.swift */; };
+		57234B132B903491000C50A0 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57234B122B903491000C50A0 /* Friend.swift */; };
+		57234B152B904E90000C50A0 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57234B142B904E90000C50A0 /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		57234AFD2B902DDF000C50A0 /* FriendWiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FriendWiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57234B012B902DDF000C50A0 /* FriendWiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWiseUITests.swift; sourceTree = "<group>"; };
 		57234B032B902DDF000C50A0 /* FriendWiseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWiseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		57234B102B90348C000C50A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		57234B122B903491000C50A0 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		57234B142B904E90000C50A0 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,12 @@
 			children = (
 				57234AE52B902DDE000C50A0 /* FriendWiseApp.swift */,
 				57234AE72B902DDE000C50A0 /* ContentView.swift */,
+				57234B142B904E90000C50A0 /* UserView.swift */,
 				57234AE92B902DDF000C50A0 /* Assets.xcassets */,
 				57234AEB2B902DDF000C50A0 /* FriendWise.entitlements */,
 				57234AEC2B902DDF000C50A0 /* Preview Content */,
+				57234B102B90348C000C50A0 /* User.swift */,
+				57234B122B903491000C50A0 /* Friend.swift */,
 			);
 			path = FriendWise;
 			sourceTree = "<group>";
@@ -261,6 +270,9 @@
 			files = (
 				57234AE82B902DDE000C50A0 /* ContentView.swift in Sources */,
 				57234AE62B902DDE000C50A0 /* FriendWiseApp.swift in Sources */,
+				57234B152B904E90000C50A0 /* UserView.swift in Sources */,
+				57234B112B90348C000C50A0 /* User.swift in Sources */,
+				57234B132B903491000C50A0 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
