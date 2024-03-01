@@ -51,6 +51,7 @@
 		57234B102B90348C000C50A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		57234B122B903491000C50A0 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		57234B142B904E90000C50A0 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		574DC7822B91713E00F8C34E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 		57234AD92B902DDE000C50A0 = {
 			isa = PBXGroup;
 			children = (
+				574DC7822B91713E00F8C34E /* README.md */,
 				57234AE42B902DDE000C50A0 /* FriendWise */,
 				57234AF62B902DDF000C50A0 /* FriendWiseTests */,
 				57234B002B902DDF000C50A0 /* FriendWiseUITests */,

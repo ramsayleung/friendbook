@@ -24,8 +24,6 @@ struct TagsView: View {
                 }
             }
         }
-        .frame(width: .infinity)
-        
     }
 }
 
