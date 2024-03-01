@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var users = [User]()
+    @Environment(\.modelContext) var modelContext
+    @Query(animation: .default) var users: [User]
     @State private var isLoading = false
     
     var body: some View {
@@ -45,7 +47,7 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                isLoading = true
+                isLoading = users.isEmpty
                 await fetchUsers()
                 isLoading = false // Update loading state after fetching
             }
@@ -62,7 +64,12 @@ struct ContentView: View {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            users = try decoder.decode([User].self, from: data)
+            let downloadedUsers = try decoder.decode([User].self, from: data)
+            print("downloadedUsers size: \(downloadedUsers.count)")
+            for user in downloadedUsers {
+                modelContext.insert(user)
+            }
+            print("insert completed: \(downloadedUsers.count)")
         }catch {
             print("Error downloading data:", error.localizedDescription)
             fatalError("Unable to download data")

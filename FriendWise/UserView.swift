@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 struct TagsView: View {
     let tags: [String]
     var body: some View {
@@ -29,6 +31,8 @@ struct TagsView: View {
 
 struct UserView: View {
     let user: User
+    @Environment(\.modelContext) var modelContext
+
     
     var body: some View {
         NavigationView {
@@ -110,18 +114,26 @@ struct UserView: View {
 
 
 #Preview {
-    let friend1 = Friend(id: UUID(), name: "Hawkins Patel")
-    let friend2 = Friend(id: UUID(), name: "Berger Robertson")
-    let user = User(id: UUID(),
-                    isActive: true,
-                    name: "Alford Rodriguez",
-                    age: 26,
-                    company: "Imkan",
-                    email: "alfordrodriguez@imkan.com",
-                    address: "907 Nelson Street, Cotopaxi, South Dakota, 5913",
-                    about: "Occaecat consequat elit aliquip magna laboris dolore laboris sunt officia adipisicing reprehenderit sunt. Do in proident consectetur labore. Laboris pariatur quis incididunt nostrud labore ad cillum veniam ipsum ullamco. Dolore laborum commodo veniam nisi. Eu ullamco cillum ex nostrud fugiat eu consequat enim cupidatat. Non incididunt fugiat cupidatat reprehenderit nostrud eiusmod eu sit minim do amet qui cupidatat. Elit aliquip nisi ea veniam proident dolore exercitation irure est deserunt.",
-                    registered: Date.now,
-                    tags: ["swift", "code", "popcorn"],
-                    friends: [friend1, friend2])
-    return UserView(user: user)
+    do {
+        let modelConfig = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: User.self, Friend.self, configurations: modelConfig)
+        
+        let friend1 = Friend(id: UUID(), name: "Hawkins Patel")
+        let friend2 = Friend(id: UUID(), name: "Berger Robertson")
+        let user = User(id: UUID(),
+                        isActive: true,
+                        name: "Alford Rodriguez",
+                        age: 26,
+                        company: "Imkan",
+                        email: "alfordrodriguez@imkan.com",
+                        address: "907 Nelson Street, Cotopaxi, South Dakota, 5913",
+                        about: "Occaecat consequat elit aliquip magna laboris dolore laboris sunt officia adipisicing reprehenderit sunt. Do in proident consectetur labore. Laboris pariatur quis incididunt nostrud labore ad cillum veniam ipsum ullamco. Dolore laborum commodo veniam nisi. Eu ullamco cillum ex nostrud fugiat eu consequat enim cupidatat. Non incididunt fugiat cupidatat reprehenderit nostrud eiusmod eu sit minim do amet qui cupidatat. Elit aliquip nisi ea veniam proident dolore exercitation irure est deserunt.",
+                        registered: Date.now,
+                        tags: ["swift", "code", "popcorn"],
+                        friends: [friend1, friend2])
+        return UserView(user: user)
+        
+    }catch {
+        return Text("Failed to create preview")
+    }
 }
